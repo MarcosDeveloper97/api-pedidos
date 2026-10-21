@@ -93,6 +93,7 @@ Outros comportamentos:
 - Corpo ausente, JSON malformado ou que não seja um objeto → `400`.
 - ID que não existe **ou** que não é numérico (ex.: `/pedidos/abc`) → `404`.
 - No PATCH, a existência do ID é verificada **antes** da validação do corpo (ID inexistente → 404 mesmo com corpo inválido).
+- O ID deve conter apenas dígitos; qualquer outro formato (ex.: `abc`, `1e0`, `-1`) resulta em 404.
 
 ## Status e transições
 
