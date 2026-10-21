@@ -1,6 +1,10 @@
 const service = require('../services/pedidos.service');
 
-// Controllers só traduzem HTTP <-> service. Erros vão para o middleware via next().
+function lerId(valor) {
+  return /^\d+$/.test(valor) ? Number(valor) : NaN;
+}
+
+
 function criar(req, res, next) {
   try {
     const pedido = service.criarPedido(req.body);
@@ -20,8 +24,7 @@ function listar(req, res, next) {
 
 function consultar(req, res, next) {
   try {
-    // Se o id não for um inteiro (ex.: "abc"), vira NaN e nunca é encontrado -> 404
-    const id = Number(req.params.id);
+     const id = lerId(req.params.id);
     res.status(200).json(service.buscarPedido(id));
   } catch (erro) {
     next(erro);
@@ -30,7 +33,7 @@ function consultar(req, res, next) {
 
 function atualizarStatus(req, res, next) {
   try {
-    const id = Number(req.params.id);
+    const id = lerId(req.params.id);
     res.status(200).json(service.atualizarStatus(id, req.body));
   } catch (erro) {
     next(erro);
