@@ -19,6 +19,11 @@ describe('criarPedido', () => {
     expect(p2.id).toBe(2);
   });
 
+    test('aceita o tipo "balcao"', () => {
+    const p = service.criarPedido({ ...pedidoValido, tipo: 'balcao' });
+    expect(p.tipo).toBe('balcao');
+  });
+
   test('remove espaços nas extremidades do cliente', () => {
     const p = service.criarPedido({ ...pedidoValido, cliente: '  Ana  ' });
     expect(p.cliente).toBe('Ana');

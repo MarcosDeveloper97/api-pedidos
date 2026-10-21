@@ -1,4 +1,4 @@
-const TIPOS = ['entrega', 'retirada'];
+const TIPOS = ['entrega', 'retirada', 'balcao'];
 const PRIORIDADES = ['baixa', 'normal', 'alta'];
 const STATUS = ['recebido', 'em_preparacao', 'enviado', 'entregue', 'cancelado'];
 const STATUS_INICIAL = 'recebido';
